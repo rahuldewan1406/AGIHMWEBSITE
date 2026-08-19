@@ -731,3 +731,10 @@ p { color: var(--muted); }
   .apply-form { padding: 32px 28px; }
   .apply-form .field-row { grid-template-columns: 1fr; }
 }
+/* Contact icons */
+.topbar-links a,
+.apply-contact a,
+.footer-contact a { display: inline-flex; align-items: center; gap: 7px; }
+.ci { flex: none; width: 15px; height: 15px; }
+.topbar-links .ci { width: 14px; height: 14px; }
+.footer-contact li { display: flex; align-items: center; gap: 8px; }
