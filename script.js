@@ -61,6 +61,7 @@ const applyForm = document.querySelector('#apply-form');
 
 if (applyForm) {
   const errorEl = document.querySelector('#af-error');
+  const successEl = document.querySelector('#af-success');
   const isEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
   applyForm.addEventListener('submit', (e) => {
@@ -74,6 +75,7 @@ if (applyForm) {
 
     if (!name || !isEmail(email) || !phone || !program) {
       if (errorEl) errorEl.hidden = false;
+      if (successEl) successEl.hidden = true;
       return;
     }
     if (errorEl) errorEl.hidden = true;
@@ -88,5 +90,7 @@ if (applyForm) {
 
     window.location.href =
       `mailto:info@agihm.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    if (successEl) successEl.hidden = false;
   });
 }
