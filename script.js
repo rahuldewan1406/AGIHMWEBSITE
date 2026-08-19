@@ -55,3 +55,38 @@ const observer = new IntersectionObserver(
 );
 
 counters.forEach((counter) => observer.observe(counter));
+
+/* Application form -> pre-filled mailto (static-site friendly, CSP-safe) */
+const applyForm = document.querySelector('#apply-form');
+
+if (applyForm) {
+  const errorEl = document.querySelector('#af-error');
+  const isEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+  applyForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = applyForm.name.value.trim();
+    const email = applyForm.email.value.trim();
+    const phone = applyForm.phone.value.trim();
+    const program = applyForm.program.value;
+    const message = applyForm.message.value.trim();
+
+    if (!name || !isEmail(email) || !phone || !program) {
+      if (errorEl) errorEl.hidden = false;
+      return;
+    }
+    if (errorEl) errorEl.hidden = true;
+
+    const subject = `Application — ${program} — ${name}`;
+    const body =
+      `Name: ${name}\n` +
+      `Email: ${email}\n` +
+      `Phone: ${phone}\n` +
+      `Program: ${program}\n` +
+      `Message: ${message || '—'}\n`;
+
+    window.location.href =
+      `mailto:info@agihm.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+}
