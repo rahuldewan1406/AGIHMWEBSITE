@@ -390,7 +390,7 @@ p { color: var(--muted); }
 
 .program-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
 }
 
@@ -744,3 +744,18 @@ p { color: var(--muted); }
 }
 .topbar-links .ci { width: 15px !important; height: 15px !important; }
 .footer-contact li { display: flex; align-items: center; gap: 8px; }
+/* Program certificate cards */
+.program-card { display: flex; flex-direction: column; }
+.program-card > p { color: var(--muted); line-height: 1.55; margin: 10px 0 0; }
+.course-meta {
+  margin: 18px 0 0; padding-top: 16px;
+  border-top: 1px solid var(--line);
+  display: grid; gap: 12px;
+}
+.course-meta > div { display: grid; gap: 3px; }
+.course-meta dt {
+  font-size: 0.66rem; font-weight: 800; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--gold);
+}
+.course-meta dd { margin: 0; font-size: 0.9rem; font-weight: 600; color: var(--text); line-height: 1.45; }
+/* END program certificate cards */
